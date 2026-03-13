@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #d8b4fe;
+      font-family: sans-serif;
+    }
+
+    .layout {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+    }
+
+    /* Left: Talkpush logo with animation */
+    @keyframes bounce-lr {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(60px); }
+    }
+
+    .logo-img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 24px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      animation: bounce-lr 0.8s ease-in-out infinite;
+    }
+
+    /* Right: profile + buttons */
+    .right-panel {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 20px;
+    }
+
+    .profile-img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 12px;
+    }
+
+    a.button {
+      text-decoration: none;
+      background-color: #16a34a;
+      color: white;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      transition: background-color 0.2s;
+    }
+
+    a.button:hover {
+      background-color: #15803d;
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <img class="logo-img" src="images.png" alt="Talkpush Logo">
+
+    <div class="right-panel">
+      <img class="profile-img" src="Melody Bernabe (2).png" alt="Melody Bernabe">
+      <div class="buttons">
+        <a class="button" href="https://help.talkpush.com/en/" target="_blank" rel="noopener noreferrer">
+          AI Melo
+        </a>
+        <a id="runaway" class="button" href="https://www.google.com/" target="_blank" rel="noopener noreferrer">
+          Catch me if you can
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const btn = document.getElementById('runaway');
+
+    btn.addEventListener('mouseenter', () => {
+      const margin = 40;
+      const bw = btn.offsetWidth;
+      const bh = btn.offsetHeight;
+      const maxX = window.innerWidth - bw - margin;
+      const maxY = window.innerHeight - bh - margin;
+      const x = Math.floor(Math.random() * maxX) + margin;
+      const y = Math.floor(Math.random() * maxY) + margin;
+      btn.style.position = 'fixed';
+      btn.style.left = x + 'px';
+      btn.style.top = y + 'px';
+    });
+  </script>
+</body>
+</html>
